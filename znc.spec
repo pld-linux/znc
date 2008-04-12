@@ -31,232 +31,232 @@ ZNC is an IRC bounce with many advanced features like detaching,
 multiple users, per channel playback buffer, SSL, IPv6, transparent
 DCC bouncing, Perl and C++ module support to name a few.
 
-%package admin
+%package module-admin
 Summary:	znc admin global module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description admin
+%description module-admin
 A global module for the znc IRC bouncer. Allows you to add/remove/edit
 users and settings on the fly via IRC messages.
 
-%package imapauth
+%package module-imapauth
 Summary:	znc imapauth global module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description imapauth
+%description module-imapauth
 A global module for the znc IRC bouncer. Allows users to authenticate
 via IMAP.
 
-%package modperl
+%package module-modperl
 Summary:	znc modperl global module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description modperl
+%description module-modperl
 A global module for the znc IRC bouncer. Loads perl scripts as ZNC
 modules.
 
-%package partyline
+%package module-partyline
 Summary:	znc partyline global module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description partyline
+%description module-partyline
 A global module for the znc IRC bouncer. Allows ZNC users to join
 internal channels and query other ZNC users on the same ZNC.
 
-%package saslauth
+%package module-saslauth
 Summary:	znc saslauth global module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description saslauth
+%description module-saslauth
 A global module for the znc IRC bouncer. Allow users to authenticate
 via SASL.
 
-%package webadmin
+%package module-webadmin
 Summary:	znc webadmin global module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description webadmin
+%description module-webadmin
 A global module for the znc IRC bouncer. Allows you to add/remove/edit
 users and settings on the fly via a web browser.
 
-%package antiidle
+%package module-antiidle
 Summary:	znc antiidle user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description antiidle
+%description module-antiidle
 A user module for the znc IRC bouncer. Hides your idle time.
 
-%package autoattach
+%package module-autoattach
 Summary:	znc autoattach user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description autoattach
+%description module-autoattach
 A user module for the znc IRC bouncer. Reattaches you to channels on
 activity.
 
-%package autoop
+%package module-autoop
 Summary:	znc autoop user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description autoop
+%description module-autoop
 A user module for the znc IRC bouncer. Auto op the good guys.
 
-%package away
+%package module-away
 Summary:	znc away user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description away
+%description module-away
 A user module for the znc IRC bouncer. Stores messages while away,
 also auto away.
 
-%package awaynick
+%package module-awaynick
 Summary:	znc awaynick user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description awaynick
+%description module-awaynick
 A user module for the znc IRC bouncer. Change your nick while you are
 away.
 
-%package chansaver
+%package module-chansaver
 Summary:	znc chansaver user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description chansaver
+%description module-chansaver
 A user module for the znc IRC bouncer. Keeping config up to date when
 user joins and parts.
 
-%package crypt
+%package module-crypt
 Summary:	znc crypt user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description crypt
+%description module-crypt
 A user module for the znc IRC bouncer. Encryption for channel/private
 messages.
 
-%package email
+%package module-email
 Summary:	znc email user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description email
+%description module-email
 A user module for the znc IRC bouncer. Monitors email activity on
 local disk /var/mail/user.
 
-%package fish
+%package module-fish
 Summary:	znc fish user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description fish
+%description module-fish
 A user module for the znc IRC bouncer. Adds the ability to encrypt all
 your outgoing messages with the FiSH blowfish block-cipher. This way
 you can do the decryption/encryption on the bouncer instead of your
 IRC client.
 
-%package kickrejoin
+%package module-kickrejoin
 Summary:	znc kickrejoin user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description kickrejoin
+%description module-kickrejoin
 A user module for the znc IRC bouncer. An Autorejoin module. Allows
 you to rejoin a channel (after a delay) when kicked.
 
-%package log
+%package module-log
 Summary:	znc log user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description log
+%description module-log
 A user module for the znc IRC bouncer. Log conversations to file.
 
-%package nickserv
+%package module-nickserv
 Summary:	znc nickserv user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description nickserv
+%description module-nickserv
 A user module for the znc IRC bouncer. Auths you with NickServ.
 
-%package perform
+%package module-perform
 Summary:	znc perform user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description perform
+%description module-perform
 A user module for the znc IRC bouncer. Performs commands on connect.
 
-%package raw
+%package module-raw
 Summary:	znc raw user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description raw
+%description module-raw
 A user module for the znc IRC bouncer. View all of the raw traffic.
 
-%package savebuff
+%package module-savebuff
 Summary:	znc savebuff user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description savebuff
+%description module-savebuff
 A user module for the znc IRC bouncer. Saves your channel buffers into
 an encrypted file so they can survive restarts and reboots.
 
-%package schat
+%package module-schat
 Summary:	znc schat user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description schat
+%description module-schat
 A user module for the znc IRC bouncer. SSL (encrypted) DCC chats.
 
-%package shell
+%package module-shell
 Summary:	znc shell user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description shell
+%description module-shell
 A user module for the znc IRC bouncer. Have your unix shell in a query
 window right inside of your IRC client.
 
-%package statupdate
+%package module-statupdate
 Summary:	znc statupdate user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description statupdate
+%description module-statupdate
 A user module for the znc IRC bouncer. StatUpdate writes users online
 status into a text file.
 
-%package stickychan
+%package module-stickychan
 Summary:	znc stickychan user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description stickychan
+%description module-stickychan
 A user module for the znc IRC bouncer. Keeps you sticked to specific
 channels.
 
-%package watch
+%package module-watch
 Summary:	znc watch user module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description watch
+%description module-watch
 A user module for the znc IRC bouncer. Monitor activity for specific
 text patterns from specific users and have the text sent to a special
 query window.
@@ -279,7 +279,6 @@ cp %{SOURCE3} modules/fish.cpp
 cp %{SOURCE4} modules/statupdate.cpp
 cp %{SOURCE5} modules/log.cpp
 mv modules/sample.cpp .
-sed -i -e 's|(?<="ZNC \%1\.3f)|-%{release}|' znc.cpp
 
 %build
 %configure \
@@ -304,123 +303,123 @@ rm -rf "$RPM_BUILD_ROOT"
 %doc AUTHORS LICENSE README znc.conf
 %attr(755,root,root) %{_bindir}/znc
 
-%files admin
+%files module-admin
 %defattr(644,root,root,755)
 %{_libdir}/znc/admin.so
 
-%files imapauth
+%files module-imapauth
 %defattr(644,root,root,755)
 %{_libdir}/znc/imapauth.so
 
 %if %{with perl}
-%files modperl
+%files module-modperl
 %defattr(644,root,root,755)
 %{_libdir}/znc/modperl.pm
 %{_libdir}/znc/modperl.so
 %endif
 
-%files partyline
+%files module-partyline
 %defattr(644,root,root,755)
 %{_libdir}/znc/partyline.so
 
 %if %{with sasl}
-%files saslauth
+%files module-saslauth
 %defattr(644,root,root,755)
 %{_libdir}/znc/saslauth.so
 %endif
 
-%files webadmin
+%files module-webadmin
 %defattr(644,root,root,755)
 %{_libdir}/znc/webadmin.so
 %{_libdir}/znc/webadmin/skins/*
 
-%files antiidle
+%files module-antiidle
 %defattr(644,root,root,755)
 %{_libdir}/znc/antiidle.so
 
-%files autoattach
+%files module-autoattach
 %defattr(644,root,root,755)
 %{_libdir}/znc/autoattach.so
 
-%files autoop
+%files module-autoop
 %defattr(644,root,root,755)
 %{_libdir}/znc/autoop.so
 
 %if %{with ssl}
-%files away
+%files module-away
 %defattr(644,root,root,755)
 %{_libdir}/znc/away.so
 %endif
 
-%files awaynick
+%files module-awaynick
 %defattr(644,root,root,755)
 %{_libdir}/znc/awaynick.so
 
-%files chansaver
+%files module-chansaver
 %defattr(644,root,root,755)
 %{_libdir}/znc/chansaver.so
 
 %if %{with ssl}
-%files crypt
+%files module-crypt
 %defattr(644,root,root,755)
 %{_libdir}/znc/crypt.so
 %endif
 
-%files email
+%files module-email
 %defattr(644,root,root,755)
 %{_libdir}/znc/email.so
 
 %if %{with ssll}
-%files fish}
+%files module-fish}
 %defattr(644,root,root,755)
 %{_libdir}/znc/fish.so
 %endif
 
-%files kickrejoin
+%files module-kickrejoin
 %defattr(644,root,root,755)
 %{_libdir}/znc/kickrejoin.so
 
-%files log
+%files module-log
 %defattr(644,root,root,755)
 %{_libdir}/znc/log.so
 
-%files nickserv
+%files module-nickserv
 %defattr(644,root,root,755)
 %{_libdir}/znc/nickserv.so
 
-%files perform
+%files module-perform
 %defattr(644,root,root,755)
 %{_libdir}/znc/perform.so
 
-%files raw
+%files module-raw
 %defattr(644,root,root,755)
 %{_libdir}/znc/raw.so
 
 %if %{with ssl}
-%files savebuff
+%files module-savebuff
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/znc/savebuff.so}
 %endif
 
 %if %{with ssl}
-%files schat
+%files module-schat
 %defattr(644,root,root,755)
 %{_libdir}/znc/schat.so
 %endif
 
-%files shell
+%files module-shell
 %defattr(644,root,root,755)
 %{_libdir}/znc/shell.so
 
-%files statupdate
+%files module-statupdate
 %defattr(644,root,root,755)
 %{_libdir}/znc/statupdate.so
 
-%files stickychan
+%files module-stickychan
 %defattr(644,root,root,755)
 %{_libdir}/znc/stickychan.so
 
-%files watch
+%files module-watch
 %defattr(644,root,root,755)
 %{_libdir}/znc/watch.so
 
