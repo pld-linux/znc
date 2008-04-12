@@ -22,7 +22,7 @@ Patch0:		%{name}-0.052-add_denysetvhost2.diff
 %{?with_sasl:BuildRequires: cyrus-sasl-devel}
 BuildRequires:	libstdc++-devel
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.8}
-%{?with_perl:BuildRequires: perl-base}
+%{?with_perl:BuildRequires: perl-devel}
 BuildRequires:	which
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
