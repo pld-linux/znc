@@ -369,8 +369,8 @@ rm -rf "$RPM_BUILD_ROOT"
 %defattr(644,root,root,755)
 %{_libdir}/znc/email.so
 
-%if %{with ssll}
-%files module-fish}
+%if %{with ssl}
+%files module-fish
 %defattr(644,root,root,755)
 %{_libdir}/znc/fish.so
 %endif
@@ -398,7 +398,7 @@ rm -rf "$RPM_BUILD_ROOT"
 %if %{with ssl}
 %files module-savebuff
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/znc/savebuff.so}
+%attr(755,root,root) %{_libdir}/znc/savebuff.so
 %endif
 
 %if %{with ssl}
