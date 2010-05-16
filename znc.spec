@@ -1,9 +1,10 @@
+#
 # Conditional build:
-%bcond_without ssl    Build without support for SSL encryption.
-%bcond_without sasl   Build without Cyrus SASL authentication module.
-%bcond_without perl   Build without Perl scripting module.
-%bcond_without ipv6   Build without IPv6 connection support.
-%bcond_with debug     Build debugging binaries.
+%bcond_without	ssl	# Build without support for SSL encryption.
+%bcond_without	sasl	# Build without Cyrus SASL authentication module.
+%bcond_without	perl	# Build without Perl scripting module.
+%bcond_without	ipv6	# Build without IPv6 connection support.
+%bcond_with	debug	# Build debugging binaries.
 Summary:	An advanced IRC bouncer
 Name:		znc
 Version:	0.052
