@@ -7,19 +7,14 @@
 %bcond_with	debug	# Build debugging binaries.
 Summary:	An advanced IRC bouncer
 Name:		znc
-Version:	0.052
+Version:	1.2
 Release:	0.1
 License:	GPL v2
 Group:		Daemons
 URL:		http://znc.sf.net/
-Source0:	http://dl.sourceforge.net/znc/%{name}-%{version}.tar.gz
-# Source0-md5:	726046e3b44d811ededf4e850b5e0f06
-Source1:	%{name}-crox-svn-admin.cpp
-Source2:	%{name}-crox-svn-antiidle.cpp
-Source3:	%{name}-crox-svn-fish.cpp
-Source4:	%{name}-crox-svn-statupdate.cpp
-Source5:	%{name}-cnu-log.cpp
-Patch0:		%{name}-0.052-add_denysetvhost2.diff
+Source0:	http://znc.in/releases/%{name}-%{version}.tar.gz
+# Source0-md5:	ef18e5402a82cc3fcab5c2ac5c2e6f3b
+Source3:	fish.c
 %{?with_sasl:BuildRequires: cyrus-sasl-devel}
 BuildRequires:	libstdc++-devel
 %{?with_ssl:BuildRequires:	openssl-devel >= 0.9.8}
@@ -68,12 +63,12 @@ Requires:	%{name} = %{version}-%{release}
 A global module for the znc IRC bouncer. Allows ZNC users to join
 internal channels and query other ZNC users on the same ZNC.
 
-%package module-saslauth
-Summary:	znc saslauth global module
+%package module-sasl
+Summary:	znc saslglobal module
 Group:		Daemons
 Requires:	%{name} = %{version}-%{release}
 
-%description module-saslauth
+%description module-sasl
 A global module for the znc IRC bouncer. Allow users to authenticate
 via SASL.
 
@@ -85,14 +80,6 @@ Requires:	%{name} = %{version}-%{release}
 %description module-webadmin
 A global module for the znc IRC bouncer. Allows you to add/remove/edit
 users and settings on the fly via a web browser.
-
-%package module-antiidle
-Summary:	znc antiidle user module
-Group:		Daemons
-Requires:	%{name} = %{version}-%{release}
-
-%description module-antiidle
-A user module for the znc IRC bouncer. Hides your idle time.
 
 %package module-autoattach
 Summary:	znc autoattach user module
@@ -110,15 +97,6 @@ Requires:	%{name} = %{version}-%{release}
 
 %description module-autoop
 A user module for the znc IRC bouncer. Auto op the good guys.
-
-%package module-away
-Summary:	znc away user module
-Group:		Daemons
-Requires:	%{name} = %{version}-%{release}
-
-%description module-away
-A user module for the znc IRC bouncer. Stores messages while away,
-also auto away.
 
 %package module-awaynick
 Summary:	znc awaynick user module
@@ -146,15 +124,6 @@ Requires:	%{name} = %{version}-%{release}
 %description module-crypt
 A user module for the znc IRC bouncer. Encryption for channel/private
 messages.
-
-%package module-email
-Summary:	znc email user module
-Group:		Daemons
-Requires:	%{name} = %{version}-%{release}
-
-%description module-email
-A user module for the znc IRC bouncer. Monitors email activity on
-local disk /var/mail/user.
 
 %package module-fish
 Summary:	znc fish user module
@@ -234,15 +203,6 @@ Requires:	%{name} = %{version}-%{release}
 A user module for the znc IRC bouncer. Have your unix shell in a query
 window right inside of your IRC client.
 
-%package module-statupdate
-Summary:	znc statupdate user module
-Group:		Daemons
-Requires:	%{name} = %{version}-%{release}
-
-%description module-statupdate
-A user module for the znc IRC bouncer. StatUpdate writes users online
-status into a text file.
-
 %package module-stickychan
 Summary:	znc stickychan user module
 Group:		Daemons
@@ -273,12 +233,7 @@ modules.
 
 %prep
 %setup -q
-%patch0 -p1
-cp %{SOURCE1} modules/admin.cpp
-cp %{SOURCE2} modules/antiidle.cpp
 cp %{SOURCE3} modules/fish.cpp
-cp %{SOURCE4} modules/statupdate.cpp
-cp %{SOURCE5} modules/log.cpp
 mv modules/sample.cpp .
 
 %build
@@ -286,7 +241,7 @@ mv modules/sample.cpp .
 	--with-module-prefix=%{_libdir}/znc \
 	%{!?with_ssl:--disable-openssl} \
 	%{?with_sasl:--enable-sasl} \
-	%{!?with_perl:--disable-perl} \
+	%{?with_perl:--enable-perl} \
 	%{?with_ipv6:--enable-ipv6} \
 	%{?with_debug:--enable-debug}
 %{__make}
@@ -301,12 +256,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS LICENSE README znc.conf
+%doc AUTHORS LICENSE README.md
 %attr(755,root,root) %{_bindir}/znc
-
-%files module-admin
-%defattr(644,root,root,755)
-%{_libdir}/znc/admin.so
+%{_mandir}/man1/znc.1*
 
 %files module-imapauth
 %defattr(644,root,root,755)
@@ -315,8 +267,11 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with perl}
 %files module-modperl
 %defattr(644,root,root,755)
-%{_libdir}/znc/modperl.pm
+%{_libdir}/znc/modperl/ZNC.pm
+%{_libdir}/znc/perleval.pm
 %{_libdir}/znc/modperl.so
+%{_libdir}/znc/modperl/ZNC.so
+%{_libdir}/znc/modperl/startup.pl
 %endif
 
 %files module-partyline
@@ -324,19 +279,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/znc/partyline.so
 
 %if %{with sasl}
-%files module-saslauth
+%files module-sasl
 %defattr(644,root,root,755)
-%{_libdir}/znc/saslauth.so
+%{_libdir}/znc/sasl.so
 %endif
 
 %files module-webadmin
 %defattr(644,root,root,755)
 %{_libdir}/znc/webadmin.so
-%{_libdir}/znc/webadmin/skins/*
-
-%files module-antiidle
-%defattr(644,root,root,755)
-%{_libdir}/znc/antiidle.so
+%{_datadir}/znc/webskins
+%{_datadir}/znc/modules/webadmin/
 
 %files module-autoattach
 %defattr(644,root,root,755)
@@ -345,12 +297,6 @@ rm -rf $RPM_BUILD_ROOT
 %files module-autoop
 %defattr(644,root,root,755)
 %{_libdir}/znc/autoop.so
-
-%if %{with ssl}
-%files module-away
-%defattr(644,root,root,755)
-%{_libdir}/znc/away.so
-%endif
 
 %files module-awaynick
 %defattr(644,root,root,755)
@@ -365,10 +311,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/znc/crypt.so
 %endif
-
-%files module-email
-%defattr(644,root,root,755)
-%{_libdir}/znc/email.so
 
 %if %{with ssl}
 %files module-fish
@@ -412,10 +354,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/znc/shell.so
 
-%files module-statupdate
-%defattr(644,root,root,755)
-%{_libdir}/znc/statupdate.so
-
 %files module-stickychan
 %defattr(644,root,root,755)
 %{_libdir}/znc/stickychan.so
@@ -428,5 +366,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc sample.cpp
 %attr(755,root,root) %{_bindir}/znc-buildmod
-%attr(755,root,root) %{_bindir}/znc-config
+%{_mandir}/man1/znc-buildmod.1*
 %{_includedir}/znc
